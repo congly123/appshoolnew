@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="fontcss/css/all.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+  </head>
+  <script>
+    (function(baseElement, pages, pageShow){
+    var pageNum = 0, pageOffset = 0;
+  
+    function _initNav(){
+      //create pages
+      for(i=1;i<pages+1;i++){
+        $((i==1?'<li class="active">':'<li>')+(i)+'</li>').appendTo('.nav-pages', baseElement).css('min-width',pages.toString().length+'em');
+      }
+      
+      //calculate initial values
+      function ow(e){return e.first().outerWidth()}
+      var w = ow($('.nav-pages li', baseElement)),bw = ow($('.nav-btn', baseElement));
+      baseElement.css('width',w*pageShow+(bw*2)+'px');
+      $('.nav-pages', baseElement).css('margin-left',bw+'px');
+      
+      //init events
+      baseElement.on('click', '.nav-pages li, .nav-btn', function(e){
+        if($(e.target).is('.nav-btn')){
+          var toPage = $(this).hasClass('prev') ? pageNum-1 : pageNum+1;
+        }else{
+          var toPage = $(this).index(); 
+        }
+        _navPage(toPage);
+      });
+    }
+  
+    function _navPage(toPage){
+      var sel = $('.nav-pages li', baseElement), w = sel.first().outerWidth(),
+          diff = toPage-pageNum;
+      
+      if(toPage>=0 && toPage <= pages-1){
+        sel.removeClass('active').eq(toPage).addClass('active');
+        pageNum = toPage;
+      }else{
+        return false;
+      }
+      
+      if(toPage<=(pages-(pageShow+(diff>0?0:1))) && toPage>=0){
+        pageOffset = pageOffset + -w*diff;  
+      }else{
+        pageOffset = (toPage>0)?-w*(pages-pageShow):0;
+      }
+      
+      sel.parent().css('left',pageOffset+'px');
+    }
+    
+    _initNav();
+  
+  })($('.pagination'), 25, 5);
+  </script>
+  <body class="__bg-primary-gray" style="font-family: 'Lexend Deca', sans-serif;">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          window.addEventListener('scroll', function () {
+              if (window.scrollY > 123) {
+                  document.getElementById('navbar_top').classList.add('fixed-top');
+                  navbar_height = document.querySelector('.navbar').offsetHeight;
+                  document.body.style.paddingTop = navbar_height + 'px';
+              } else {
+                  document.getElementById('navbar_top').classList.remove('fixed-top');
+                  document.body.style.paddingTop = '0';
+              }
+          });
+      });
+
+
+  </script>
+  
+    <header class="d-flex text-light" id="navbar_top" style="background-color: #2F3D5F;">
+      <div class="d-flex justify-content-center w-100 p-2" style="gap: 1rem">
+        <div class="ps-2" style="width: 18%;">
+        <h2>
+          <a href="dashboard.html" class="text-white"> <i class="fa-solid fa-angle-left" style="display: inline-block"></i></a>
+        </h2>  
+        </div>
+        <div style="width: 82%;">
+          <h2 class="" >Hoạt Động - Tin Tức</h2>
+        </div>
+      </div>
+    </header>
+    <!--  -->
+    <div class="container d-flex flex-column mb-5">
+      <aside class="mt-2 m-1 mb-0">
+   
+        <form class="input-group col-12 col-lg-auto">
+          <input
+            class="form-control border-end-0 border"
+            type="search"
+            value=""
+            placeholder="search"
+            id="example-search-input"
+          />
+          <span class="input-group-append">
+            <button
+              class="btn btn-outline-secondary bg-white border-start-0 border-bottom-0 border ms-n5"
+              type="button"
+            >
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </form>
+      </aside>
+      <!--  -->
+      <article class="bg-light p-3 m-1 mb-3 border rounded-3 border-0">
+        <!--  -->
+        <div class="">
+          <a href="news.html" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/active1.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2">
+            <a href="news.html" class="__style-link"
+              ><h4 class="card-title">
+                <strong class="text-dark">
+                  bảng tổng hợp đăng ký kết nối kinh doanh (từ : 22/2/2222)
+                </strong>
+              </h4></a
+            >
+            <p class="text-danger">
+              <strong>| <span class="text-danger"> 1/1/2023 </span> </strong>
+            </p>
+            <span class="card-text badge text-dark"> Trường tiểu học thông báo hiện đại cho học sinh.</span>
+          </div>
+          <hr />
+        </div>
+        <div class="">
+          <a href="#" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/active1.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2">
+            <a href="#" class="__style-link"
+              ><h4 class="card-title">
+                <strong class="text-dark">
+                  bảng tổng hợp đăng ký kết nối kinh doanh (từ : 22/2/2222)
+                </strong>
+              </h4></a
+            >
+            <p class="text-danger">
+              <strong>| <span class="text-danger"> 1/1/2023 </span> </strong>
+            </p>
+            <span class="card-text badge text-dark"> Thông báo đến từ trường học trường tiểu học... </span>
+          </div>
+          <hr />
+        </div>
+        <div class="">
+          <a href="#" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/active1.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2">
+            <a href="#" class="__style-link"
+              ><h4 class="card-title">
+                <strong class="text-dark">
+                  bảng tổng hợp đăng ký kết nối kinh doanh (từ : 22/2/2222)
+                </strong>
+              </h4></a
+            >
+            <p class="text-danger">
+              <strong>| <span class="text-danger"> 1/1/2023 </span> </strong>
+            </p>
+            <span class="card-text badge text-dark"> Thông báo đến từ trường học trường tiểu học... </span>
+          </div>
+          <hr />
+        </div>
+        <div class="">
+          <a href="#" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/active1.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2">
+            <a href="#" class="__style-link"
+              ><h4 class="card-title">
+                <strong class="text-dark">
+                  bảng tổng hợp đăng ký kết nối kinh doanh (từ : 22/2/2222)
+                </strong>
+              </h4></a
+            >
+            <p class="text-danger">
+              <strong>| <span class="text-danger"> 1/1/2023 </span> </strong>
+            </p>
+            <span class="card-text badge text-dark"> Thông báo đến từ trường học trường tiểu học... </span>
+          </div>
+          <hr />
+        </div>
+        <div class="card card-expandable">
+          <div class="card-content">
+            <div class="bg-color-red" style="height: 300px">
+              <div class="card-header text-color-white display-block">Framework7<br />
+                <small style="opacity: 0.7">Build Mobile Apps</small>
+              </div>
+              <a href="#" class="link card-close card-opened-fade-in color-white"
+                style="position: absolute; right: 15px; top: 15px">
+                <i class="icon f7-icons">xmark_circle_fill</i>
+              </a>
+            </div>
+            <div class="card-content-padding">
+              <p>Framework7 - is a free and open source HTML mobile framework to develop hybrid mobile apps or web
+                apps with iOS or Android (Material) native look and feel. It is also an indispensable prototyping apps
+                tool to show working app prototype as soon as possible in case you need to.</p>
+              <p>The main approach of the Framework7 is to give you an opportunity to create iOS and Android
+                (Material) apps with HTML, CSS and JavaScript easily and clear. Framework7 is full of freedom. It
+                doesn't limit your imagination or offer ways of any solutions somehow. Framework7 gives you freedom!
+              </p>
+              <p>Framework7 is not compatible with all platforms. It is focused only on iOS and Android (Material) to
+                bring the best experience and simplicity.</p>
+              <p>Framework7 is definitely for you if you decide to build iOS and Android hybrid app (Cordova or
+                Capacitor) or web app that looks like and feels as great native iOS or Android (Material) apps.</p>
+            </div>
+          </div>
+        </div>
+        <nav class="pagination">
+          <div class="nav-btn prev"></div>
+          <ul class="nav-pages"></ul>
+          <div class="nav-btn next"></div>
+        </nav>
+        <!--  -->
+      </article>
+      <div class="mt-4">
+        <div class="row">
+          <h6 class="w-75 fw-bold">Hoạt động trong ngày:</h6>
+        </div>
+        
+        <div id="carouselExampleControls" class="carousel slide pb-1" data-bs-ride="carousel">
+          <div class="carousel-inner align-items-center rounded-4 px-1">
+            <div class="carousel-item active bg-white rounded-4 overflow-hidden shadow">
+              <div style="height: 300px;">
+              <img src="images/active1.jpg" class="d-block h-100 w-100 rounded-4" alt="...">
+              </div>
+              <div class="card-body pt-1 text-center">
+                <p class="card-text font-weight-bold fs-6 mb-0 text-secondary">                                   
+                  <span class="fs-3 font-weight-500   pr-1" style="color: #6666CC;">Trồng cây nông trại</span>         
+                </p>
+                <h6 class="pt-2 text-danger pb-2 size">
+                  Lớp 5a2
+                </h6>
+              </div>
+            </div>
+            <div class="carousel-item bg-white rounded-4 overflow-hidden shadow">
+              <div style="height: 300px;">
+                <img src="images/active2.jpg" class="d-block h-100 w-100 rounded-4" alt="...">
+                </div>
+              <div class="card-body pt-1 text-center">
+                <p class="card-text font-weight-bold fs-6 mb-0 text-secondary">                                   
+                  <span class="fs-3 font-weight-500  pr-1" style="color: #6666CC;">Tham quan khu nông nghiệp</span>         
+                </p>
+                <h6 class="pt-2 text-danger pb-2 size">
+                  Lớp 5a2
+                </h6>
+              </div>
+            </div>
+            <div class="carousel-item bg-white rounded-4 overflow-hidden shadow">
+              <div style="height: 300px;">
+                <img src="images/active3.jpg" class="d-block h-100 w-100 rounded-4" alt="...">
+                </div>
+              <div class="card-body pt-1 text-center">
+                <p class="card-text font-weight-bold fs-6 mb-0 text-secondary">                                   
+                  <span class="fs-3  font-weight-500  pr-1" style="color: #6666CC;">Khu tổ chức ẩm thực</span>         
+                </p>
+                <h6 class="pt-2 text-danger pb-2 size">
+                  Lớp 5a2
+                </h6>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <!--  -->
+      <article class="bg-light p-3 m-1 pb-0 border rounded-3 border-0">
+        <div class="mt-2 mb-3">
+          <h3 class="text-danger"><strong>Thông báo mới: </strong></h3>
+        </div>
+        <!--  -->
+        <div class="d-flex flex-column">
+          <!--  -->
+          <div class="list-group">
+            <a class="text-black text-decoration-none" href="notificationDetail.html">
+              <div class="py-2 border-bottom" style="background-color:#f5f8fa;">
+                  <div class=" d-flex align-items-center gap-2">
+                      <img class="rounded-circle" src="./images/milk.jpg" width="40" height="40">
+                      <div class="d-flex flex-column gap-2">
+                        
+                          <p class="mb-0 text-center">Thứ 2 họp phụ huynh</p>
+                          <div
+                          class="bg-gradient rounded-4 p-1 d-inline-block border border-secondary align-items-center d-flex gap-2">
+                          <i class="bi bi-image-fill text-danger ms-2"></i>
+                          <div>Thông báo nghỉ tết.png</div>
+                      </div>
+                  </div>
+                  <div class="d-flex flex-column justify-content-between align-items-end text-muted">
+                      <div class="p-2">11:30</div>
+                      <div class="p-2">+2</div>
+                  </div>
+              </div>
+          </div>
+      </a>
+      <a class="text-black text-decoration-none" href="notificationDetail.html">
+        <div class="py-2 border-bottom" style="background-color:#f5f8fa;">
+            <div class=" d-flex align-items-center gap-2">
+                <img class="rounded-circle" src="./images/milk.jpg" width="40" height="40">
+                <div class="d-flex flex-column gap-2">
+                  
+                    <p class="mb-0 text-center">Thứ 2 họp phụ huynh</p>
+                    <div
+                    class="bg-gradient rounded-4 p-1 d-inline-block border border-secondary align-items-center d-flex gap-2">
+                    <i class="bi bi-image-fill text-danger ms-2"></i>
+                    <div>Thông báo nghỉ tết.png</div>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-between align-items-end text-muted">
+                <div class="p-2">11:30</div>
+                <div class="p-2">+2</div>
+                </div>
+            </div>
+        </div>
+    </a>
+    <a class="text-black text-decoration-none" href="notificationDetail.html">
+      <div class="py-2 border-bottom" style="background-color:#f5f8fa;">
+          <div class=" d-flex align-items-center gap-2">
+              <img class="rounded-circle" src="./images/milk.jpg" width="40" height="40">
+              <div class="d-flex flex-column gap-2">
+                
+                  <p class="mb-0 text-center">Thứ 2 họp phụ huynh</p>
+                  <div
+                  class="bg-gradient rounded-4 p-1 d-inline-block border border-secondary align-items-center d-flex gap-2">
+                  <i class="bi bi-image-fill text-danger ms-2"></i>
+                  <div>Thông báo nghỉ tết.png</div>
+              </div>
+          </div>
+          <div class="d-flex flex-column justify-content-between align-items-end text-muted">
+              <div class="p-2">11:30</div>
+              <div class="p-2">+2</div>
+          </div>
+      </div>
+  </div>
+</a>
+          </div>
+          <!--  -->
+        </div>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-light">
+            <a href="notification.html" class="__style-link">
+              <h6>Xem thêm <i class="fa-solid fa-arrow-right"></i></h6>
+            </a>
+          </button>
+        </div>
+      </article>
+
+      <!--  -->
+      <article class="bg-light p-3 m-1 mb-3 border rounded-3 border-0">
+        <div class="mt-2 mb-3">
+          <h3 class="text-danger ">
+            <strong>Giới thiệu </strong>
+          </h3>
+        </div>
+        <!--  -->
+        <div class="d-flex flex-column">
+          <!--  -->
+          <a href="#" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/123.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2">
+            <a href="#" class="__style-link"
+              ><h4 class="card-title">
+                <strong>
+                 Kế hoạch thực hiện năm 2023 (từ ngày : 22/2/2222)
+                </strong>
+              </h4></a
+            >
+            <p class="text-danger">
+              <strong>| <span> 1/1/2023 </span> </strong>
+            </p>
+            <span class="card-text"> Thông báo đến từ trường học béo... </span>
+          </div>
+          <hr />
+          <!--  -->
+        </div>
+        <div class="d-flex flex-column">
+          <div
+            class="d-flex flex-row justify-content-start mt-1 mb-3"
+            style="gap: 1rem"
+          >
+            <div>
+              <img
+                style="max-width: 37vw; max-height: 300px"
+                src="images/123.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h6>
+                <strong>
+                  Nâng cao năng lực ngoại ngữ - tin học cho học sinh phổ thông
+                  TP.HCM
+                </strong>
+              </h6>
+              <span style="font-size: 0.75rem">
+                <strong>| 1/1/2023 </strong>
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="d-flex flex-row justify-content-start mt-1 mb-3"
+            style="gap: 1rem"
+          >
+            <div>
+              <img
+                style="max-width: 37vw; max-height: 300px"
+                src="images/123.jpg"
+                alt=""
+              />
+            </div>
+            <div>
+              <h6>
+                <strong>
+                  Nâng cao năng lực ngoại ngữ - tin học cho học sinh phổ thông
+                  TP.HCM
+                </strong>
+              </h6>
+              <span style="font-size: 0.75rem">
+                <strong>| 1/1/2023 </strong>
+              </span>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button class="btn btn-light">
+              <a href="notification.html" class="__style-link">
+
+                <h5 class="bg-prami">Xem thêm <i class="fa-solid fa-arrow-right"></i></h5>
+              </a>
+            </button>
+          </div>
+        </div>
+      </article>
+
+
+    <footer class="pt-2 text-light" style="background-color: #2F3D5F;font-family: 'Lexend Deca', sans-serif;">
+      <div class="container mb-0 d-flex flex-column" style="gap: 1rem">
+        <h5 class="mb-0">
+          Trung tâm Ngoại ngữ và Tin học - Sở Giáo dục và Đào tạo TP. HCM
+        </h5>
+        <ul class="ps-2 mt-0">
+          <li class="list-unstyled">
+            <h6><i class="fa-solid fa-envelope"></i> : info.@eclo.vn</h6>
+          </li>
+          <li class="list-unstyled">
+            <h6><i class="fa-solid fa-square-phone"></i> : 099999999999</h6>
+          
+          </li>
+          <li class="list-unstyled">
+            <h6><i class="fa-solid fa-location-dot"></i> :54, Bàu Cát 6, Phường 14, Quận Tân Bình, TP.HCM</h6>
+          
+          </li>
+        </ul>
+      </div>
+    </footer>
+
+    </div>
+    <footer>
+    <div class="container">
+      <div class="row fixed-bottom py-2 bg-white border border-top">
+        <ul class="nav nav-tabs card-header-tabs px-4 " data-bs-tabs="tabs">
+          <li class="nav-item col col-3 px-3">
+            <a href="dashboard.html" class="nav-link text-black text-center " aria-current="true" > 
+              <i class="fa-solid fa-house fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item col col-3">
+            <a href="schedule.html" class="nav-link text-black text-center" aria-current="true" > 
+              <i class="fa-solid fa-calendar-days fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item col col-3">
+            <a href="history-face.html" class="nav-link text-black text-center" aria-current="true" > 
+              <i class="fa-solid fa-calendar-check fa-lg"></i>
+            </a>
+          </li> 
+
+          <li class="nav-item col col-3">
+            <a href="notificationTeacher.html" class="nav-link text-black  text-center" aria-current="true" > 
+              <i class="fa-solid fa-bell fa-lg"></i>
+            </a>
+          </li>
+
+
+        </ul> 
+
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>

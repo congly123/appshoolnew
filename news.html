@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.scss" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+
+  </head>
+  <script>
+    (function(baseElement, pages, pageShow){
+    var pageNum = 0, pageOffset = 0;
+  
+    function _initNav(){
+      //create pages
+      for(i=1;i<pages+1;i++){
+        $((i==1?'<li class="active">':'<li>')+(i)+'</li>').appendTo('.nav-pages', baseElement).css('min-width',pages.toString().length+'em');
+      }
+      
+      //calculate initial values
+      function ow(e){return e.first().outerWidth()}
+      var w = ow($('.nav-pages li', baseElement)),bw = ow($('.nav-btn', baseElement));
+      baseElement.css('width',w*pageShow+(bw*2)+'px');
+      $('.nav-pages', baseElement).css('margin-left',bw+'px');
+      
+      //init events
+      baseElement.on('click', '.nav-pages li, .nav-btn', function(e){
+        if($(e.target).is('.nav-btn')){
+          var toPage = $(this).hasClass('prev') ? pageNum-1 : pageNum+1;
+        }else{
+          var toPage = $(this).index(); 
+        }
+        _navPage(toPage);
+      });
+    }
+  
+    function _navPage(toPage){
+      var sel = $('.nav-pages li', baseElement), w = sel.first().outerWidth(),
+          diff = toPage-pageNum;
+      
+      if(toPage>=0 && toPage <= pages-1){
+        sel.removeClass('active').eq(toPage).addClass('active');
+        pageNum = toPage;
+      }else{
+        return false;
+      }
+      
+      if(toPage<=(pages-(pageShow+(diff>0?0:1))) && toPage>=0){
+        pageOffset = pageOffset + -w*diff;  
+      }else{
+        pageOffset = (toPage>0)?-w*(pages-pageShow):0;
+      }
+      
+      sel.parent().css('left',pageOffset+'px');
+    }
+    
+    _initNav();
+  
+  })($('.pagination'), 25, 5);
+  </script>
+  <body class="__bg-primary-gray " style=" font-family: 'Rubik', sans-serif;">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          window.addEventListener('scroll', function () {
+              if (window.scrollY > 123) {
+                  document.getElementById('navbar_top').classList.add('fixed-top');
+                  navbar_height = document.querySelector('.navbar').offsetHeight;
+                  document.body.style.paddingTop = navbar_height + 'px';
+              } else {
+                  document.getElementById('navbar_top').classList.remove('fixed-top');
+                  document.body.style.paddingTop = '0';
+              }
+          });
+      });
+
+
+  </script>
+  
+  <header class="d-flex text-light bg-header " id="navbar_top">
+    <div class="d-flex justify-content-center w-100 p-2" style="gap: 1rem">
+      <div class="ps-2" style="width: 18%;">
+      <h2>
+        <a href="active-news.html" class="text-white"> <i class="fa-solid fa-angle-left" style="display: inline-block"></i></a>
+      </h2>  
+      </div>
+      <div style="width: 82%;">
+        <h2 class="" >Hoạt Động - Tin Tức</h2>
+      </div>
+    </div>
+  </header>
+    <!--  -->
+    <div class="container d-flex flex-column">
+
+      <!--  -->
+      <article class="bg-light p-3 m-1 mb-3 border rounded-3 border-0">
+        <!--  -->
+        <div class="">
+            <aside class="mt-2 m-1 mb-0">
+                <h2 class=" fw-bold">bảng tổng hợp đăng ký kết nối kinh doanh (từ : 22/2/2222)</h2>
+                </form>
+              </aside>
+          <a href="#" class="__style-link">
+            <img
+              class="card-img-top border rounded-3 border-0"
+              src="images/active1.jpg"
+              alt="béo"
+            />
+          </a>
+          <div class="mt-2 " style="text-align: justify;">
+            <section class="border-bottom pb-3">
+                <div class="text-center mb-3">
+                </div>
+                <ul class="list-inline lh-1 d-flex align-items-center justify-content-center mb-8 flex-wrap">
+                   
+                    <li class="list-inline-item pr-3 border-right border-2x">By Admin</li>
+                    <li class="list-inline-item pr-3">Jan 19, 2021</li>
+                    <li class="list-inline-item pr-1"><span class="rounded-circle d-block" style="width: 4px; height: 4px;background-color: #C4C4C4"></span></li>
+                    <li class="list-inline-item pr-1">134 views</li>
+                </ul>
+                <p class="mb-8 fs-18">
+                    Tiếp nối thành công từ những mùa giải trước, ngày 10-1, Sở GD-ĐT TP.HCM phối hợp với IIG Việt Nam tổ chức Hội thi tiếng Anh quốc tế TOEFL Challenge và tin học quốc tế IC3 & IC3 Spark Challenge năm học 2020-2021.
+                    Phát biểu khai mạc hội thi, bà Trần Thị Vân Anh - Phó Giám đốc Trung tâm Ngoại ngữ - Tin học, Sở GD-ĐT TP.HCM - cho biết, trong thời đại toàn cầu hóa hiện nay, một nền giáo dục hội nhập là nền giáo dục phải chú trọng đến việc đào tạo tiếng Anh và tin học. Với vai trò quan trọng là công cụ giao tiếp phổ biến nhất trên thế giới, phục vụ hữu hiệu cho việc học tập và làm việc, tiếng Anh và tin học chính là chìa khóa để mở cánh cửa kết nối giữa các quốc gia, thúc đẩy kinh tế, văn hóa và xã hội phát triển.
+                                        
+                </p>
+                
+                <h2 class="fs-24 text-center px-xl-8 mb-6">“Đại sứ thương hiệu”</h2>
+                
+                <p class="mb-5 fs-18">
+                    Vậy là ĐẠI SỨ THƯƠNG HIỆU SYMEE COSMETICS đã chính thức lộ diện rồi. Hãy cùng SYMEE đoán xem, sẽ còn điều bất ngờ gì trước thềm Symee ra mắt bộ đôi sản phẩm đầu tiên?
+                </p>
+                <h4 class="fs-18 font-weight-500 mb-3">Tham gia buổi lễ ký kết có sự góp mặt của :</h4>
+                <p class="mb-8 fs-18">
+                    • Top5 Miss Universe Việt Nam 2022 - Đại sứ thương hiệu SYMEE COSMETICS LÊ HOÀNG PHƯƠNG;
+                    <br>
+                    • Founder Symee Cosmetics - Ông NGUYỄN TRUNG HIẾU;
+                    <br>
+                    • Co-Founder Symee Cosmetics - Ông LÊ NHỰT TRƯỜNG;
+                    <br>
+                    • Trợ lý Đại sứ thương hiệu Symee Cosmetics - TÍN PHAN.
+                </p>
+
+
+                <div class="row no-gutters">
+                    <div class="col-sm-6 mb-4 mb-sm-0">
+                        <ul class="list-inline">
+                            <li class="list-inline-item mr-1">
+                                <a href="#" class="text-body hover-secondary text-decoration-none">#happy</a>
+                            </li>
+                            <li class="list-inline-item mr-1">
+                                <a href="#" class="text-body hover-secondary text-decoration-none">#lifestyle</a>
+                            </li>
+                            <li class="list-inline-item mr-1">
+                                <a href="#" class="text-body hover-secondary text-decoration-none">#gifts</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a href="#" class="text-body hover-secondary text-decoration-none">#symeecosmetics</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- <div class="col-sm-6 d-flex justify-content-sm-end">
+                        <label class="text-secondary font-weight-600 mr-4 mb-0">Share:</label>
+                        <ul class="list-inline mb-0 lh-1">
+                            <li class="list-inline-item mr-4"><a href="https://symeecosmetics.vn/" class="fs-18 lh-14 font-weight-normal"><i class="fab fa-twitter"></i></a>
+                            </li>
+                            <li class="list-inline-item mr-4"><a href="https://www.facebook.com/symeecomestics/" class="fs-18 lh-14 font-weight-normal"><i class="fab fa-facebook-f"></i></a>
+                            </li>
+                            <li class="list-inline-item mr-4"><a href="https://www.instagram.com/symee_official/" class="fs-18 lh-14 font-weight-normal"><i class="fab fa-instagram"></i></a>
+                            </li>
+                            <li class="list-inline-item"><a href="https://www.youtube.com/@symeebyletruong-kinnguyen4331" class="fs-18 lh-14 font-weight-normal"><i class="fab fa-youtube"></i></a>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+
+            </section>
+          </div>
+          <hr />
+        </div>
+        <!--  -->
+      </article>
+      <!--  -->
+    
+
+    
+
+
+    <footer class="pt-3 text-light" style="background-color: rgb(212, 8, 8)">
+      <div class="container d-flex flex-column" style="gap: 1rem">
+        <h5 class="">
+          Trung tâm Ngoại ngữ và Tin học - Sở Giáo dục và Đào tạo TP. HCM
+        </h5>
+        <h5 >địa chỉ này nằm ở đâu đó ngoài kia :v</h5>
+        <h6>Emai: đây là email</h6>
+        <ul>
+          <li>
+            <h6><strong>liên hệ :</strong></h6>
+            <p>điện thoại : 99999999999</p>
+          </li>
+          <li>
+            <h6><strong>liên hệ :</strong></h6>
+            <p>điện thoại : 99999999999</p>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    </div>
+    <footer>
+    <div class="container">
+      <div class="row fixed-bottom py-2 bg-white border border-top">
+        <ul class="nav nav-tabs card-header-tabs px-4 " data-bs-tabs="tabs">
+          <li class="nav-item col col-3">
+            <a href="dashboard.html" class="nav-link text-black text-center " aria-current="true" > 
+              <i class="fa-solid fa-house fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item col col-3">
+            <a href="schedule.html" class="nav-link text-black text-center" aria-current="true" > 
+              <i class="fa-solid fa-calendar-days fa-lg"></i>
+            </a>
+          </li>
+          <li class="nav-item col col-3 px-3">
+            <a href="history-face.html" class="nav-link text-black text-center rounded-5 active border-0" aria-current="true" > 
+              <i class="fa-solid fa-calendar-check fa-lg"></i>
+            </a>
+          </li> 
+
+          <li class="nav-item col col-3">
+            <a href="notificationTeacher.html" class="nav-link text-black  text-center" aria-current="true" > 
+              <i class="fa-solid fa-bell fa-lg"></i>
+            </a>
+          </li>
+
+
+        </ul> 
+
+      </div>
+    </div>
+  </footer>
+  </body>
+</html>
